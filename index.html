@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revenue Per Lead Calculator — Free Tool for Australian Small Businesses</title>
+  <meta name="description" content="Calculate your revenue per lead instantly. Enter your total revenue and number of leads to see how much each lead is worth to your business. Free for AU service businesses.">
+  <meta property="og:title" content="Revenue Per Lead Calculator — Free Tool for Australian Small Businesses">
+  <meta property="og:description" content="Calculate your revenue per lead and compare to AU service business benchmarks. Find out which lead sources are driving the most value.">
+  <meta property="og:type" content="website">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7076137753154472"
+      crossorigin="anonymous"></script>
+  <!-- Vercel Analytics -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Speed Insights -->
+  <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8f9fa;
+      color: #1a1a2e;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    header .logo span { color: #6c63ff; }
+
+    header a.cta-link {
+      background: #6c63ff;
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      opacity: 0.85;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .main-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 24px 64px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 32px 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .card h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+
+    .input-group .hint {
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-prefix {
+      position: absolute;
+      left: 12px;
+      font-size: 0.97rem;
+      color: #666;
+      pointer-events: none;
+    }
+
+    .input-suffix {
+      position: absolute;
+      right: 12px;
+      font-size: 0.88rem;
+      color: #aaa;
+      pointer-events: none;
+    }
+
+    .input-group input[type="number"] {
+      width: 100%;
+      padding: 11px 14px 11px 28px;
+      border: 1.5px solid #d0d0e0;
+      border-radius: 8px;
+      font-size: 0.97rem;
+      color: #1a1a2e;
+      outline: none;
+      transition: border-color 0.2s;
+      -moz-appearance: textfield;
+    }
+
+    .input-group input[type="number"].no-prefix {
+      padding-left: 14px;
+    }
+
+    .input-group input[type="number"]::-webkit-inner-spin-button,
+    .input-group input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+    .input-group input[type="number"]:focus { border-color: #6c63ff; }
+
+    .input-group select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #d0d0e0;
+      border-radius: 8px;
+      font-size: 0.97rem;
+      color: #1a1a2e;
+      outline: none;
+      background: #fff;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .input-group select:focus { border-color: #6c63ff; }
+
+    .optional-label {
+      font-size: 0.78rem;
+      color: #aaa;
+      font-weight: 400;
+      margin-left: 6px;
+    }
+
+    .calc-btn {
+      width: 100%;
+      background: #6c63ff;
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: 9px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: background 0.2s;
+    }
+
+    .calc-btn:hover { background: #574fd6; }
+
+    .results-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 32px 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      display: none;
+    }
+
+    .results-card h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 20px;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .result-item {
+      background: #f0eeff;
+      border-radius: 10px;
+      padding: 18px 16px;
+      text-align: center;
+    }
+
+    .result-item.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .result-item .label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #6c63ff;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }
+
+    .result-item .value {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      line-height: 1.1;
+    }
+
+    .result-item .sub {
+      font-size: 0.78rem;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    .result-item.highlight .value { color: #6c63ff; }
+
+    .benchmark-bar {
+      padding: 16px 18px;
+      border-radius: 9px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .benchmark-bar.above { background: #e8f5e9; color: #2e7d32; }
+    .benchmark-bar.below { background: #fce8e8; color: #b71c1c; }
+    .benchmark-bar.within { background: #fff8e1; color: #f57f17; }
+    .benchmark-bar.nodata { background: #f5f5f5; color: #666; }
+
+    .benchmark-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 14px;
+    }
+
+    .benchmark-table th {
+      text-align: left;
+      padding: 8px 10px;
+      background: #f0eeff;
+      color: #6c63ff;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .benchmark-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #f0f0f8;
+      color: #444;
+    }
+
+    .benchmark-table tr.selected-row td {
+      background: #f0eeff;
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+
+    .benchmark-table tr:last-child td { border-bottom: none; }
+
+    .explainer {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 20px;
+      font-size: 0.88rem;
+      color: #555;
+      margin-top: 16px;
+    }
+
+    .explainer strong { color: #1a1a2e; }
+
+    .disclaimer-note {
+      font-size: 0.78rem;
+      color: #aaa;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .reset-link {
+      display: block;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6c63ff;
+      cursor: pointer;
+      margin-top: 14px;
+      text-decoration: underline;
+    }
+
+    /* How it works */
+    .how-it-works {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .how-it-works h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 14px;
+    }
+
+    .how-it-works p {
+      font-size: 0.92rem;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .formula-box {
+      background: #f0eeff;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-family: monospace;
+      font-size: 0.88rem;
+      color: #1a1a2e;
+      margin: 12px 0;
+    }
+
+    /* Email opt-in */
+    .optin-box {
+      background: #fff;
+      border: 1px solid #e0e0ea;
+      border-radius: 12px;
+      padding: 28px;
+      margin: 28px 0;
+    }
+
+    .optin-box h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+
+    .optin-box p {
+      font-size: 0.88rem;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    .optin-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .optin-form input[type="email"] {
+      padding: 11px 14px;
+      border: 1.5px solid #d0d0e0;
+      border-radius: 7px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .optin-form input[type="email"]:focus { border-color: #6c63ff; }
+
+    .consent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    .consent-row input[type="checkbox"] { margin-top: 2px; flex-shrink: 0; }
+
+    .optin-form button {
+      background: #6c63ff;
+      color: #fff;
+      border: none;
+      padding: 11px 20px;
+      border-radius: 7px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .optin-form button:hover { background: #574fd6; }
+
+    .optin-success {
+      display: none;
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* CTA box */
+    .cta-box {
+      background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+      color: #fff;
+      border-radius: 14px;
+      padding: 36px 32px;
+      margin: 28px 0;
+      text-align: center;
+    }
+
+    .cta-box h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .cta-box p {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+
+    .cta-box ul {
+      text-align: left;
+      display: inline-block;
+      margin: 0 0 18px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .cta-box li { margin-bottom: 5px; font-size: 0.92rem; }
+
+    .cta-box .price-tag {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #a79cff;
+      margin-bottom: 18px;
+    }
+
+    .cta-box a.btn {
+      background: #6c63ff;
+      color: #fff;
+      padding: 13px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.97rem;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+
+    .cta-box a.btn:hover { background: #574fd6; }
+
+    .cta-box .disclaimer {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 14px;
+    }
+
+    footer {
+      background: #1a1a2e;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.82rem;
+    }
+
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+
+    @media (max-width: 520px) {
+      .result-grid { grid-template-columns: 1fr; }
+      .result-item.full-width { grid-column: auto; }
+      .hero { padding: 36px 16px 32px; }
+      .main-wrap { padding: 28px 16px 48px; }
+      .card, .results-card, .how-it-works { padding: 24px 18px; }
+      .cta-box { padding: 28px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="https://marketing-ai-psi-nine.vercel.app/" class="logo">Marketing<span>AI</span></a>
+  <a href="https://buy.stripe.com/cNi8wR0wZd8lePh01cbsc00" class="cta-link">Get Started — $149</a>
+</header>
+
+<div class="hero">
+  <h1>Revenue Per Lead Calculator</h1>
+  <p>Find out exactly how much revenue each lead generates for your business — and how you compare to AU service business benchmarks.</p>
+</div>
+
+<div class="main-wrap">
+
+  <div class="card">
+    <h2>Enter Your Numbers</h2>
+
+    <div class="input-group">
+      <label for="totalRevenue">Total Revenue from Leads (AUD)</label>
+      <span class="hint">The total revenue generated from your leads over the period you're measuring</span>
+      <div class="input-wrapper">
+        <span class="input-prefix">$</span>
+        <input type="number" id="totalRevenue" placeholder="e.g. 25000" min="0" step="any">
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label for="totalLeads">Number of Leads Generated</label>
+      <span class="hint">Total leads received in the same period (enquiries, form fills, calls, DMs, etc.)</span>
+      <div class="input-wrapper">
+        <span class="input-prefix" style="left:12px; font-size:0.9rem; color:#aaa;">#</span>
+        <input type="number" id="totalLeads" class="no-prefix" placeholder="e.g. 50" min="1" step="1" style="padding-left:28px;">
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label for="sector">Your Sector <span class="optional-label">(optional — for benchmark comparison)</span></label>
+      <select id="sector">
+        <option value="">— Select your sector —</option>
+        <option value="trades">Trades &amp; Construction</option>
+        <option value="professional">Professional Services (Accounting, Legal, Consulting)</option>
+        <option value="health">Health &amp; Allied Health</option>
+        <option value="realestate">Real Estate</option>
+        <option value="hospitality">Hospitality &amp; Food</option>
+        <option value="retail">Retail &amp; E-commerce</option>
+        <option value="education">Education &amp; Coaching</option>
+        <option value="marketing">Marketing &amp; Creative</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <label for="closeRate">Close Rate <span class="optional-label">(optional — % of leads that become clients)</span></label>
+      <span class="hint">Enter your close rate to also see revenue per qualified lead</span>
+      <div class="input-wrapper">
+        <input type="number" id="closeRate" class="no-prefix" placeholder="e.g. 30" min="0" max="100" step="any" style="padding-left:14px; padding-right:36px;">
+        <span class="input-suffix">%</span>
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">Calculate Revenue Per Lead</button>
+  </div>
+
+  <div class="results-card" id="resultsCard">
+    <h2>Your Results</h2>
+
+    <div class="result-grid">
+      <div class="result-item highlight">
+        <div class="label">Revenue Per Lead</div>
+        <div class="value" id="rplValue">—</div>
+        <div class="sub">AUD per lead</div>
+      </div>
+      <div class="result-item">
+        <div class="label">Total Leads</div>
+        <div class="value" id="totalLeadsDisplay">—</div>
+        <div class="sub">leads in period</div>
+      </div>
+    </div>
+
+    <div id="qualifiedSection" style="display:none;">
+      <div class="result-grid">
+        <div class="result-item highlight full-width">
+          <div class="label">Revenue Per Qualified Lead</div>
+          <div class="value" id="rplQualified">—</div>
+          <div class="sub">AUD per lead that closes</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="benchmarkSection" style="display:none; margin-top:8px;">
+      <div class="benchmark-bar" id="benchmarkBar"></div>
+      <table class="benchmark-table" style="margin-top:16px;">
+        <thead>
+          <tr>
+            <th>Sector</th>
+            <th>Typical RPL Range (AUD)</th>
+          </tr>
+        </thead>
+        <tbody id="benchmarkTableBody"></tbody>
+      </table>
+      <p style="font-size:0.75rem; color:#aaa; margin-top:8px;">Benchmarks are indicative ranges based on AU service business data. Actual figures vary by business model, deal size, and market.</p>
+    </div>
+
+    <div class="explainer" id="explainerText" style="margin-top:16px;"></div>
+
+    <p class="disclaimer-note">Results are indicative. Actual figures vary based on your specific business conditions, lead quality, and sales process.</p>
+    <a class="reset-link" onclick="resetCalc()">Reset calculator</a>
+  </div>
+
+  <div class="how-it-works">
+    <h2>How Revenue Per Lead Works</h2>
+    <p>Revenue per lead (RPL) tells you how much revenue, on average, each new lead generates for your business. It's one of the most useful metrics for evaluating your marketing channels and lead sources.</p>
+    <div class="formula-box">Revenue Per Lead = Total Revenue ÷ Number of Leads</div>
+    <p>If you know your close rate, you can also calculate <strong>revenue per qualified lead</strong> — which adjusts for the fact that not every lead becomes a client.</p>
+    <div class="formula-box">Revenue Per Qualified Lead = Revenue Per Lead ÷ Close Rate (%)</div>
+    <p>Knowing your RPL helps you decide how much you can spend per lead (your maximum cost per lead), compare performance across channels, and set realistic revenue targets from your marketing activity.</p>
+  </div>
+
+  <!-- Email Opt-in -->
+  <div class="optin-box">
+    <h3>Get AU Marketing Benchmarks &amp; Lead Generation Tips</h3>
+    <p>We'll send you practical lead generation strategies and benchmarks for Australian service businesses — what's working right now and how to improve your RPL.</p>
+    <form class="optin-form" id="optinForm" onsubmit="submitForm(event)">
+      <input type="email" id="emailInput" name="fields[email]" placeholder="your@email.com" required>
+      <label class="consent-row">
+        <input type="checkbox" id="consentCheck" required>
+        <span>I consent to receive marketing emails from MarketingAI. I can unsubscribe at any time. (Required under Australia's Spam Act 2003)</span>
+      </label>
+      <button type="submit">Send Me the Benchmarks</button>
+    </form>
+    <div class="optin-success" id="optinSuccess">Thanks! Check your inbox for AU marketing benchmarks.</div>
+  </div>
+
+  <!-- CTA Box -->
+  <div class="cta-box">
+    <h2>Want a Done-With-You Marketing System? MarketingAI — $149 once-off setup.</h2>
+    <p>We build the complete marketing setup for your Australian small business — once, so you can run it yourself:</p>
+    <ul>
+      <li><strong>AI Content Engine:</strong> 30-day content calendar in your voice</li>
+      <li><strong>Outbound Lead Sequence:</strong> personalised outreach templates for your target clients</li>
+      <li><strong>Email Nurture Sequence:</strong> automated follow-ups for new enquiries and past clients</li>
+    </ul>
+    <div class="price-tag">$149 AUD — once-off setup. No retainer. Yours to own.</div>
+    <a href="https://buy.stripe.com/cNi8wR0wZd8lePh01cbsc00" class="btn">Get Started →</a>
+    <div class="disclaimer">Setup facilitates but does not guarantee specific client or revenue outcomes. Results depend on your offer, market, and execution.</div>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 MarketingAI &nbsp;|&nbsp; <a href="https://marketing-ai-psi-nine.vercel.app/">marketingai.com.au</a></p>
+</footer>
+
+<script>
+  // AU service business RPL benchmarks (indicative ranges, AUD)
+  var BENCHMARKS = {
+    trades:        { label: 'Trades & Construction',                    low: 800,  high: 3500 },
+    professional:  { label: 'Professional Services',                    low: 1500, high: 8000 },
+    health:        { label: 'Health & Allied Health',                   low: 300,  high: 1200 },
+    realestate:    { label: 'Real Estate',                              low: 5000, high: 25000 },
+    hospitality:   { label: 'Hospitality & Food',                       low: 80,   high: 400  },
+    retail:        { label: 'Retail & E-commerce',                      low: 50,   high: 300  },
+    education:     { label: 'Education & Coaching',                     low: 200,  high: 1500 },
+    marketing:     { label: 'Marketing & Creative',                     low: 600,  high: 4000 }
+  };
+
+  function fmtAUD(val) {
+    return '$' + val.toLocaleString('en-AU', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  }
+
+  function calculate() {
+    var revenue = parseFloat(document.getElementById('totalRevenue').value);
+    var leads = parseFloat(document.getElementById('totalLeads').value);
+    var sector = document.getElementById('sector').value;
+    var closeRate = parseFloat(document.getElementById('closeRate').value);
+
+    if (isNaN(revenue) || isNaN(leads)) {
+      alert('Please enter Total Revenue and Number of Leads.');
+      return;
+    }
+    if (leads <= 0) {
+      alert('Number of leads must be greater than zero.');
+      return;
+    }
+    if (revenue < 0) {
+      alert('Total revenue cannot be negative.');
+      return;
+    }
+
+    var rpl = revenue / leads;
+
+    document.getElementById('rplValue').textContent = fmtAUD(rpl);
+    document.getElementById('totalLeadsDisplay').textContent = leads.toLocaleString('en-AU');
+
+    // Qualified lead section
+    var qualSection = document.getElementById('qualifiedSection');
+    if (!isNaN(closeRate) && closeRate > 0 && closeRate <= 100) {
+      var rplQualified = rpl / (closeRate / 100);
+      document.getElementById('rplQualified').textContent = fmtAUD(rplQualified);
+      qualSection.style.display = 'block';
+    } else {
+      qualSection.style.display = 'none';
+    }
+
+    // Benchmark section
+    var benchSection = document.getElementById('benchmarkSection');
+    if (sector && BENCHMARKS[sector]) {
+      var bench = BENCHMARKS[sector];
+      var bar = document.getElementById('benchmarkBar');
+      var tbody = document.getElementById('benchmarkTableBody');
+
+      if (rpl > bench.high) {
+        bar.className = 'benchmark-bar above';
+        bar.textContent = 'Above benchmark: your RPL of ' + fmtAUD(rpl) + ' is above the typical ' + bench.label + ' range of ' + fmtAUD(bench.low) + ' – ' + fmtAUD(bench.high) + '. Strong performance — your marketing and sales process is working well.';
+      } else if (rpl >= bench.low) {
+        bar.className = 'benchmark-bar within';
+        bar.textContent = 'Within benchmark: your RPL of ' + fmtAUD(rpl) + ' is within the typical ' + bench.label + ' range of ' + fmtAUD(bench.low) + ' – ' + fmtAUD(bench.high) + '. You are performing in line with AU averages for this sector.';
+      } else {
+        bar.className = 'benchmark-bar below';
+        bar.textContent = 'Below benchmark: your RPL of ' + fmtAUD(rpl) + ' is below the typical ' + bench.label + ' range of ' + fmtAUD(bench.low) + ' – ' + fmtAUD(bench.high) + '. Consider reviewing your pricing, close rate, or lead quality to improve performance.';
+      }
+
+      // Build table
+      tbody.innerHTML = '';
+      Object.keys(BENCHMARKS).forEach(function(key) {
+        var b = BENCHMARKS[key];
+        var tr = document.createElement('tr');
+        if (key === sector) tr.className = 'selected-row';
+        tr.innerHTML = '<td>' + b.label + (key === sector ? ' ★' : '') + '</td><td>' + fmtAUD(b.low) + ' – ' + fmtAUD(b.high) + '</td>';
+        tbody.appendChild(tr);
+      });
+
+      benchSection.style.display = 'block';
+    } else {
+      benchSection.style.display = 'none';
+    }
+
+    // Explainer
+    var explainer = document.getElementById('explainerText');
+    var maxCpl = rpl * 0.3;
+    explainer.innerHTML =
+      '<strong>What this means:</strong> Each lead you generate produces an average of <strong>' + fmtAUD(rpl) + '</strong> in revenue. ' +
+      'To maintain healthy margins, aim to keep your cost per lead below roughly <strong>' + fmtAUD(maxCpl) + '</strong> (30% of RPL as a starting guide). ' +
+      ((!isNaN(closeRate) && closeRate > 0) ? 'With a ' + closeRate + '% close rate, each qualified lead (one that converts) is worth <strong>' + fmtAUD(rpl / (closeRate / 100)) + '</strong> — that\'s the number to use when setting your maximum cost per qualified lead budget.' : 'Enter your close rate above to also see revenue per qualified lead.');
+
+    document.getElementById('resultsCard').style.display = 'block';
+    document.getElementById('resultsCard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function resetCalc() {
+    document.getElementById('totalRevenue').value = '';
+    document.getElementById('totalLeads').value = '';
+    document.getElementById('sector').value = '';
+    document.getElementById('closeRate').value = '';
+    document.getElementById('resultsCard').style.display = 'none';
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    var email = document.getElementById('emailInput').value;
+    var consent = document.getElementById('consentCheck').checked;
+    if (!email || !consent) return;
+
+    var url = 'https://assets.mailerlite.com/jsonp/2282416/forms/185339817098216933/subscribe';
+    var params = new URLSearchParams({ 'fields[email]': email, 'ml-submit': '1', anticsrf: 'true' });
+
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString(),
+      mode: 'no-cors'
+    }).then(function() {
+      document.getElementById('optinForm').style.display = 'none';
+      document.getElementById('optinSuccess').style.display = 'block';
+    }).catch(function() {
+      document.getElementById('optinForm').style.display = 'none';
+      document.getElementById('optinSuccess').style.display = 'block';
+    });
+  }
+</script>
+
+</body>
+</html>
