@@ -721,6 +721,7 @@
   }
 
   function calculate() {
+    if (typeof gtag === "function") { gtag("event", "calculator_submit", {calculator_name: "revenue_per_lead_calculator", page_title: document.title}); }
     var revenue = parseFloat(document.getElementById('totalRevenue').value);
     var leads = parseFloat(document.getElementById('totalLeads').value);
     var sector = document.getElementById('sector').value;
@@ -824,6 +825,7 @@
     }).then(function() {
       document.getElementById('optinForm').style.display = 'none';
       document.getElementById('optinSuccess').style.display = 'block';
+      if (typeof gtag === "function") { gtag("event", "form_submit", {form_id: "early-access", page_title: document.title}); }
     }).catch(function() {
       document.getElementById('optinForm').style.display = 'none';
       document.getElementById('optinSuccess').style.display = 'block';
